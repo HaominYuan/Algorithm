@@ -40,7 +40,7 @@ public class CodeCheck {
         List<String> list1 = readFile(file1);
         List<String> list2 = readFile(file2);
         similarityMatrix = calSimilarityMatrix(list1, list2);
-        matrix = classify(similarityMatrix);;
+        matrix = classify(similarityMatrix);
         maxNumber = calMaximumNum(matrix);
     }
 
@@ -102,7 +102,9 @@ public class CodeCheck {
         s.append(displayMatrix(similarityMatrix));
         s.append("矩阵D：").append('\n');
         s.append(displayMatrix(matrix));
-        s.append("最多重复行的个数为：").append(maxNumber);
+        s.append("最多重复行的个数为：").append(maxNumber).append('\n');
+        s.append("重复率为：").append((double) maxNumber / Math.min(similarityMatrix.length, similarityMatrix[0].length))
+                .append('\n');
         return s.toString();
     }
 }
