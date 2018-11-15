@@ -14,6 +14,8 @@ class SingletonDemo02 implements Serializable {
         }
     }
 
+//    这里加上synchronized可以用于多线程的程序，但是这样效率太低
+//    加入已经创建好了对象，就不需要用synchronized
     static synchronized SingletonDemo02 getInstance() {
         if (instance == null) {
             instance = new SingletonDemo02();

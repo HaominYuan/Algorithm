@@ -1,9 +1,8 @@
 package Singleton;
 
+//调用方式为 SingletonDemo05.SINGLETON_DEMO_05
 public enum SingletonDemo05 {
-    SINGLETON_DEMO_05;
+    SINGLETON_DEMO_05,
+    ;
+}
 
-
-    void setSingletonDemo05Operator() {
-    }
-    }

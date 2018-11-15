@@ -10,12 +10,9 @@ public class Test {
 
         CountDownLatch countDownLatch = new CountDownLatch(threadNum);
         for (int i = 0; i < threadNum; i++) {
-            new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    for (int i = 0; i < 100000; i++) {
-                        Object o = SingletonDemo05.SINGLETON_DEMO_05;
-                    }
+            new Thread(() -> {
+                for (int i1 = 0; i1 < 100000; i1++) {
+                    Object o = SingletonDemo05.SINGLETON_DEMO_05;
                 }
             }).start();
         }
