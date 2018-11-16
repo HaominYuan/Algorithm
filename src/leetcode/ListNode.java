@@ -1,12 +1,13 @@
 package leetcode;
 
 class ListNode {
-        int val;
-        ListNode next;
-        ListNode(int x) {
-            val = x;
-        }
 
+    int val;
+    ListNode next;
+
+    ListNode(int x) {
+        val = x;
+    }
 
     @Override
     public String toString() {
@@ -19,5 +20,12 @@ class ListNode {
         stringBuilder.append("NULL");
         return stringBuilder.toString();
 //        return val + "";
+    }
+
+    void reverseToString(ListNode p) {
+        if (p != null) {
+            reverseToString(p.next);
+            System.out.println(p.val);
+        }
     }
 }
