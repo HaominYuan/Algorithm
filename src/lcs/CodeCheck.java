@@ -62,8 +62,10 @@ public class CodeCheck {
         for (int i = 0; i < matrix.length; i++) {
             matrix[i] = new Double[list2.size()];
             for (int j = 0; j < matrix.length; j++) {
-                matrix[i][j] = calSimilarity(list1.get(i), list2.get(j));
-                System.out.println(findLCSString(list1.get(i), list2.get(j)));
+                String temp1 = PreProcess.converter(list1.get(i));
+                String temp2 = PreProcess.converter(list2.get(j));
+                matrix[i][j] = calSimilarity(temp1, temp2);
+                System.out.println(findLCSString(temp1, temp2));
             }
         }
         return matrix;
