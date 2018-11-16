@@ -1,5 +1,9 @@
 package lcs;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.HashMap;
 
 class PreProcess {
@@ -7,6 +11,14 @@ class PreProcess {
             "for", "while", "do", "continue", "if", "else", "char", "int", "double", "float", "return"
             , "const"
     };
+
+    public static void main(String[] args) throws IOException {
+        BufferedReader bufferedReader = new BufferedReader(new FileReader("src/lcs/b.cpp"));
+        String string;
+        while ((string = bufferedReader.readLine()) != null) {
+            System.out.println(PreProcess.converter(string));
+        }
+    }
 
     static String converter(String line) {
         StringBuilder result = new StringBuilder();

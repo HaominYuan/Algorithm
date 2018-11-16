@@ -19,7 +19,7 @@ public class Pow {
                 for (int i = 0; i < n; i++) {
                     result = result * x;
                 }
-            } else if (n < 0) {
+            } else {
                 for (int i = 0; i < -n; i++) {
                     result = result / x;
                 }
