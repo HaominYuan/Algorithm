@@ -1,7 +1,5 @@
 package csp;
 
-import Thread.randomprimenumber.Generator;
-
 import java.util.*;
 
 public class Agent {
