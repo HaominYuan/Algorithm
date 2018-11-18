@@ -1,13 +1,6 @@
 package leetcode;
 
 public class MergeKSortedLists {
-//    Input:
-//            [
-//            1->4->5,
-//            1->3->4,
-//            2->6
-//            ]
-//    Output: 1->1->2->3->4->4->5->6
     public static void main(String[] args) {
         ListNode listNode11 = new ListNode(1);
         ListNode listNode12 = new ListNode(4);
@@ -26,41 +19,44 @@ public class MergeKSortedLists {
         lists[0] = listNode11;
         lists[1] = listNode21;
         lists[2] = listNode31;
-        System.out.println(Solution.mergeKLists(lists));
+        System.out.println(new Solution().mergeKLists(lists));
 
     }
 
     static class Solution {
-        static ListNode mergeKLists(ListNode[] lists) {
-            ListNode head = null;
-            for (ListNode list : lists) {
-                head = merge(head, list);
+        ListNode mergeKLists(ListNode[] lists) {
+            if (lists.length == 0) {
+                return null;
             }
-            return head;
+            return mergeLists(lists, 0, lists.length - 1);
         }
 
-        private static ListNode merge(ListNode list1, ListNode list2) {
-            ListNode head = new ListNode(0);
-            head.next = list1;
-            ListNode p = head.next;
-            ListNode pre = head;
-            ListNode temp = null;
-            while (p != null && list2 != null) {
-                if (p.val <= list2.val) {
-                    p = p.next;
-                    pre = pre.next;
-                } else {
-                    pre.next = list2;
-                    list2 = list2.next;
-                    pre.next.next = p;
-                    pre = pre.next;
-                }
-            }
 
-            if (list2 != null) {
-                pre.next = list2;
+        ListNode mergeLists(ListNode[] lists, int begin, int end) {
+            if (begin == end) {
+                return lists[begin];
             }
-            return head.next;
+            int mid = (begin + end) / 2;
+            return merge(mergeLists(lists, begin, mid), mergeLists(lists, mid + 1, end));
+        }
+
+
+
+        private  ListNode merge(ListNode list1, ListNode list2) {
+            ListNode dummy = new ListNode(0);
+            ListNode p = dummy;
+            while (list1 != null && list2 != null) {
+                if (list1.val < list2.val) {
+                    p.next = list1;
+                    list1 = list1.next;
+                } else {
+                    p.next = list2;
+                    list2 = list2.next;
+                }
+                p = p.next;
+            }
+            p.next = list1 != null ? list1 : list2;
+            return dummy.next;
         }
 
 

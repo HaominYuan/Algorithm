@@ -70,7 +70,7 @@ public class MergeTwoSortedLists {
                 }
                 p = p.next;
             }
-            p.next = l1 != null ? l2 : l1;
+            p.next = l1 != null ? l1 : l2;
             return dummy.next;
         }
     }

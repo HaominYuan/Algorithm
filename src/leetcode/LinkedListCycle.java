@@ -30,10 +30,14 @@ public class LinkedListCycle {
 
     static class Solution {
         public boolean hasCycle(ListNode head) {
-            if(head==null)return false;
-            if(head.next==head)return true;
-            ListNode l=head.next;
-            head.next=head;
+            if (head == null) {
+                return false;
+            }
+            if (head.next == head) {
+                return true;
+            }
+            ListNode l = head.next;
+            head.next = head;
             return hasCycle(l);
         }
     }

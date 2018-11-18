@@ -20,11 +20,8 @@ public class MultiChannelBalancedMergeSort {
         for (int i = 0; i < k; i++) {
             input(i);
         }
-
         createLoserTree();
-
         BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(path + File.separator + "MultiChannelBalancedMergeSort"));
-
         while (block[loserTree[0]] != Double.MAX_VALUE) {
             bufferedWriter.write(String.valueOf(block[loserTree[0]]));
             bufferedWriter.newLine();
