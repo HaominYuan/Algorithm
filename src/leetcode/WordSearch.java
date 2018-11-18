@@ -22,136 +22,51 @@ public class WordSearch {
         System.out.println(new Solution().exist(matrix, "ABCESEEEFS"));
     }
 
-    static class MySolution {
-        public boolean exist(char[][] board, String word) {
-            if ("".equals(word)) {
-                return false;
-            }
 
-            int sum = board.length * board[0].length;
-
-            if (word.length() > sum) {
-                return false;
-            }
-            boolean[][] marked = new boolean[board.length][];
-            for (int i = 0; i < marked.length; i++) {
-                marked[i] = new boolean[board[i].length];
-            }
-
-            for (int i = 0; i < board.length; i++) {
-                for (int j = 0; j < board[i].length; j++) {
-                    if (func(board, i, j, word, 0, marked)) {
-                        return true;
-                    }
-                }
-            }
-            return false;
-        }
-
-
-        boolean func(char[][] board, int x, int y, String word, int index, boolean[][] marked) {
-            if (index == word.length() - 1 && board[x][y] == word.charAt(index)) {
-                return true;
-            }
-            if (board[x][y] != word.charAt(index)) {
-                return false;
-            }
-
-
-            marked[x][y] = true;
-            if (index + 1 < word.length()) {
-                if (x + 1 < board.length && !marked[x + 1][y]) {
-                    if (func(board, x + 1, y, word, index + 1, marked)) {
-                        marked[x][y] = false;
-                        return true;
-                    }
-                }
-
-                if (x - 1 >= 0 && !marked[x - 1][y]) {
-                    if (func(board, x - 1, y, word, index + 1, marked)) {
-                        marked[x][y] = false;
-                        return true;
-                    }
-                }
-                if (y + 1 < board[x].length && !marked[x][y + 1]) {
-                    if (func(board, x, y + 1, word, index + 1, marked)) {
-                        marked[x][y] = false;
-                        return true;
-                    }
-                }
-                if (y - 1 >= 0 && !marked[x][y - 1]) {
-                    if (func(board, x, y - 1, word, index + 1, marked)) {
-                        marked[x][y] = false;
-                        return true;
-                    }
-                }
-            }
-            marked[x][y] = false;
-            return false;
-        }
-    }
-
-
+    // 检查边界可以写在前面
     static class Solution {
-        int m;
-        int n;
-
         public boolean exist(char[][] board, String word) {
-            if (null == board || word == null || word.isEmpty()) {
+            if (null == board || word == null || word.isEmpty() || board.length * board[0].length < word.length()) {
                 return false;
             }
 
-            boolean[][] used = new boolean[board.length][board[0].length];
-
-
-            m = board.length;
-            n = board[0].length;
-
+            boolean[][] isVisited = new boolean[board.length][board[0].length];
             char[] charArray = word.toCharArray();
-
-            for (int i = 0; i < m; i++) {
-                for (int j = 0; j < n; j++) {
-                    if (exist(board, used, charArray, i, j, 0)) {
+            for (int i = 0; i < board.length; i++) {
+                for (int j = 0; j < board[0].length; j++) {
+                    if (exist(board, isVisited, charArray, i, j, 0)) {
                         return true;
                     }
                 }
             }
-
             return false;
 
         }
 
-        private boolean exist(char[][] board, boolean[][] mem, char[] charArray, int i, int j, int index) {
+        private boolean exist(char[][] board, boolean[][] isVisited, char[] charArray, int i, int j, int index) {
             if (index == charArray.length) {
                 return true;
             }
 
-            if (i >= m || i < 0) {
+            if (i < 0 || i == board.length || j < 0 || j == board[0].length) {
                 return false;
             }
 
-            if (j >= n || j < 0) {
+            if (isVisited[i][j] || board[i][j] != charArray[index]) {
                 return false;
             }
 
+            isVisited[i][j] = true;
 
-            if (mem[i][j] || board[i][j] != charArray[index]) {
-                return false;
+            boolean found = exist(board, isVisited, charArray, i + 1, j, ++index) ||
+                    exist(board, isVisited, charArray, i - 1, j, index) ||
+                    exist(board, isVisited, charArray, i, j + 1, index) ||
+                    exist(board, isVisited, charArray, i, j - 1, index);
+            if (!found) {
+                isVisited[i][j] = false;
             }
-
-            mem[i][j] = true;
-            // up -> right -> down -> left
-            boolean found = exist(board, mem, charArray, i - 1, j, index + 1)
-                    || exist(board, mem, charArray, i, j + 1, index + 1)
-                    || exist(board, mem, charArray, i + 1, j, index + 1)
-                    || exist(board, mem, charArray, i, j - 1, index + 1);
-
-
-            // recover
-            if (!found) mem[i][j] = false;
-
-
             return found;
+
         }
     }
 }
