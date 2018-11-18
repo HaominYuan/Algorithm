@@ -5,7 +5,6 @@ public class PowerOfTwo {
 
     }
 
-
     static class Solution {
         public boolean isPowerOfTwo(int n) {
             if (n < 0) {

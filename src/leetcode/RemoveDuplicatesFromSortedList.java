@@ -22,7 +22,7 @@ public class RemoveDuplicatesFromSortedList {
 
 
 
-    static class Solution {
+    static class MySolution {
         public ListNode deleteDuplicates(ListNode head) {
 
             if (head == null) {
@@ -41,6 +41,25 @@ public class RemoveDuplicatesFromSortedList {
             }
             return head;
 
+        }
+    }
+
+    static class Solution {
+        public ListNode deleteDuplicates(ListNode head) {
+            // 如果头链表中没有或者只有一个节点，那么直接返回
+            if (head == null || head.next == null) {
+                return head;
+            }
+
+            // 如果后一个元素和前一个元素不想等，那么不用删除，否则直接到没有不重复的元素位置
+            if (head.val != head.next.val) {
+                head.next = deleteDuplicates(head.next);
+                return head;
+            } else {
+                while ((head = head.next).next != null && (head.val == head.next.val)) {
+                }
+                return deleteDuplicates(head);
+            }
         }
     }
 }
