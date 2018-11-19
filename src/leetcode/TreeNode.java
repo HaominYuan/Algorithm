@@ -4,12 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
-class TreeNode {
-    int val;
-    TreeNode left;
-    TreeNode right;
+public class TreeNode {
 
-    TreeNode(int x) {
+    public int val;
+    public TreeNode left;
+    public TreeNode right;
+
+    public TreeNode(int x) {
         val = x;
     }
 
