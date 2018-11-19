@@ -4,10 +4,8 @@ import java.util.Stack;
 
 public class MinStack {
 
-    Stack<Integer> stack;
-    int min;
-    int time;
-
+    private Stack<Integer> stack;
+    private Stack<Integer> assistStack;
 
 
     /**
@@ -15,23 +13,22 @@ public class MinStack {
      */
     public MinStack() {
         stack = new Stack<>();
-        min = Integer.MAX_VALUE;
-        int time = 0;
+        assistStack = new Stack<>();
     }
 
     public void push(int x) {
         stack.push(x);
-        if (x < min) {
-            min = x;
-            time = 1;
+        if (assistStack.isEmpty()) {
+            assistStack.push(x);
+        } else {
+            assistStack.push(Math.min(x, assistStack.peek()));
         }
     }
 
     public void pop() {
-        int tmp = stack.pop();
-        if (tmp == min) {
-            time = time - 1;
-        }
+        stack.pop();
+        assistStack.pop();
+
     }
 
     public int top() {
@@ -39,6 +36,6 @@ public class MinStack {
     }
 
     public int getMin() {
-        return min;
+        return assistStack.peek();
     }
 }
