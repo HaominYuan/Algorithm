@@ -1,6 +1,6 @@
 package leetcode;
 
-public class strStr {
+public class StrStr {
     public static void main(String[] args) {
         String haystack = "a.cpp";
         String needle = "abab";
