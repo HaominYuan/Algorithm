@@ -10,9 +10,12 @@ public class BinarySortTree {
     private TreeNode root;
     private TreeNode pre;
 
+    public TreeNode getRoot() {
 
+        return root.left;
+    }
 
-    BinarySortTree() {
+    public BinarySortTree() {
         root = new TreeNode(0);
     }
 
@@ -22,11 +25,11 @@ public class BinarySortTree {
         this.root.left = root;
     }
 
-    int getSize() {
+    public int getSize() {
         return root.val;
     }
 
-    void insert(int value) {
+    public void insert(int value) {
         root.left = insert(root.left, value);
         root.val = root.val + 1;
     }
@@ -43,7 +46,7 @@ public class BinarySortTree {
         return node;
     }
 
-    List<Integer> inorderTraversalC() {
+    public List<Integer> inorderTraversalC() {
         List<Integer> list = new ArrayList<>();
         TreeNode p = root.left;
         Stack<TreeNode> stack = new Stack<>();
@@ -60,7 +63,7 @@ public class BinarySortTree {
         return list;
     }
 
-    List<Integer> inorderTraversalR() {
+    public List<Integer> inorderTraversalR() {
         List<Integer> list = new ArrayList<>();
         inorderTraversalR(list, root.left);
         return list;
@@ -78,7 +81,7 @@ public class BinarySortTree {
 
 
 
-    int searchMax() {
+    public int searchMax() {
         if (root.val == 0) {
             return Integer.MIN_VALUE;
         }
@@ -90,7 +93,7 @@ public class BinarySortTree {
     }
 
 
-    int searchMin() {
+    public int searchMin() {
         if (root.val == 0) {
             return Integer.MAX_VALUE;
         }
@@ -120,7 +123,7 @@ public class BinarySortTree {
         return isContain(node.right, value);
     }
 
-    boolean delete(int value) {
+    public boolean delete(int value) {
         TreeNode p = root.left;
         pre = root;
         boolean direction = true;
@@ -194,4 +197,8 @@ public class BinarySortTree {
         }
     }
 
+    @Override
+    public String toString() {
+        return inorderTraversalR().toString();
+    }
 }
