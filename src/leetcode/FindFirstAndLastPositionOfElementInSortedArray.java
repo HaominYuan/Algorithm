@@ -5,45 +5,102 @@ import java.util.Arrays;
 public class FindFirstAndLastPositionOfElementInSortedArray {
     public static void main(String[] args) {
         int[] nums = new int[]{7, 7, 7, 8, 8, 10};
-        System.out.println(Arrays.toString(Solution.searchRange(nums, 8)));
+        System.out.println(Arrays.toString(new Solution().searchRange(nums, 1)));
     }
 
-    static class Solution {
-        static int[] searchRange(int[] nums, int target) {
+
+    static class Solution_R {
+        public int[] searchRange(int[] nums, int target) {
             if (nums.length == 0) {
                 return new int[]{-1, -1};
             }
-            return search(nums, target, 0, nums.length - 1);
+            int[] range = new int[2];
+            range[0] = nums.length;
+            range[1] = -1;
+            search(nums, 0, nums.length - 1, target, range);
+            if (range[0] == nums.length) {
+                range[0] = -1;
+            }
+            return range;
         }
 
-        static int[] search(int[] nums, int target, int left, int right) {
-            if (left > right) {
-                return new int[]{-1, -1};
+        void search(int[] nums, int left, int right, int target, int[] range) {
+            if (left > right || nums[right] < target || target < nums[left]) {
+                return;
             }
             int mid = (left + right) / 2;
             if (nums[mid] == target) {
-                int temp1, temp2;
-                int[] x1 = search(nums, target, left, mid - 1);
-                int[] x2 = search(nums, target, mid + 1, right);
-                if (x1[0] == -1) {
-                    temp1 = mid;
-                }else{
-                    temp1 = x1[0];
-                }
-                if (x2[0] == -1) {
-                    temp2 = mid;
+                if (nums[left] != target) {
+                    search(nums, left, mid - 1, target, range);
                 } else {
-                    temp2 = x2[1];
+                    range[0] = Math.min(range[0], left);
+                    range[1] = Math.max(range[1], left);
                 }
 
-                return new int[]{temp1, temp2};
+                if (nums[right] != target) {
+                    search(nums, mid + 1, right, target, range);
+                } else {
+                    range[0] = Math.min(range[0], right);
+                    range[1] = Math.max(range[1], right);
+                }
+                range[0] = Math.min(range[0], mid);
+                range[1] = Math.max(range[1], mid);
 
-
-            } else if (nums[mid] < target) {
-                return search(nums, target, mid + 1, right);
+            } else if (target < nums[mid]) {
+                search(nums, left, mid - 1, target, range);
             } else {
-                return search(nums, target, left, mid - 1);
+                search(nums, mid + 1, right, target, range);
             }
+
+
         }
     }
+
+
+    static class Solution {
+        public int[] searchRange(int[] nums, int target) {
+            int[] range = new int[2];
+            range[0] = searchFirst(nums, target);
+            range[1] = searchLast(nums, target);
+            return range;
+        }
+
+        int searchFirst(int[] nums, int target) {
+            int left = 0, right = nums.length - 1;
+            while (left <= right) {
+                int mid = (left + right) / 2;
+                if (nums[mid] == target) {
+                    if (mid - 1 == -1 || nums[mid - 1] != target) {
+                        return mid;
+                    }
+                    right = mid - 1;
+                } else if (target < nums[mid]) {
+                    right = mid - 1;
+                } else {
+                    left = mid + 1;
+                }
+            }
+            return -1;
+        }
+
+        int searchLast(int[] nums, int target) {
+            int left = 0, right = nums.length - 1;
+            while (left <= right) {
+                int mid = (left + right) / 2;
+                if (nums[mid] == target) {
+                    if (mid + 1 == nums.length || nums[mid + 1] != target) {
+                        return mid;
+                    }
+                    left = mid + 1;
+                } else if (target < nums[mid]) {
+                    right = mid - 1;
+                } else {
+                    left = mid + 1;
+                }
+            }
+            return -1;
+        }
+    }
+
+
 }
