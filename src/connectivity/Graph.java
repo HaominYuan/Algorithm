@@ -36,7 +36,6 @@ class Graph {
 
     private void readFile() {
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(path))) {
-            HashSet<Integer> set = new HashSet<>();
             String line;
             line = bufferedReader.readLine();
             vertex = Integer.parseInt(line);
@@ -53,19 +52,20 @@ class Graph {
                 int y = Integer.parseInt(strings[1]);
                 map[x][y] = true;
                 map[y][x] = true;
-
-                int hash1 = x * vertex + y;
-                int hash2 = y * vertex + x;
-                if (set.contains(hash1) || set.contains(hash2)) {
-                    continue;
-                }
-                set.add(hash1);
-                set.add(hash2);
-                list.add(new Integer[]{x, y});
             }
-
+            toList();
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    private void toList() {
+        for (int i = 0; i < map.length; i++) {
+            for (int j = i + 1; j < map.length; j++) {
+                if (map[i][j]) {
+                    list.add(new Integer[]{i, j});
+                }
+            }
         }
     }
 
