@@ -6,6 +6,7 @@ public class Tmp {
     }
 
     static class Solution {
+
         public int func(int[] prices) {
             if (prices.length <= 1) {
                 return 0;

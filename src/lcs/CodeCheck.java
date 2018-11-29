@@ -61,11 +61,11 @@ public class CodeCheck {
         Double[][] matrix = new Double[list1.size()][];
         for (int i = 0; i < matrix.length; i++) {
             matrix[i] = new Double[list2.size()];
-            for (int j = 0; j < matrix.length; j++) {
+            for (int j = 0; j < matrix[i].length; j++) {
                 String temp1 = PreProcess.converter(list1.get(i));
                 String temp2 = PreProcess.converter(list2.get(j));
                 matrix[i][j] = calSimilarity(temp1, temp2);
-                System.out.println(findLCSString(temp1, temp2));
+//                System.out.println(findLCSString(temp1, temp2));
             }
         }
         return matrix;
@@ -97,14 +97,14 @@ public class CodeCheck {
     @Override
     public String toString() {
         StringBuilder s = new StringBuilder();
-        s.append("Threshold：").append(threshold).append('\n');
-        s.append("file1：").append(file1).append('\n');
-        s.append("file2：").append(file2).append('\n');
-        s.append("矩阵S：").append('\n');
-        s.append(displayMatrix(similarityMatrix));
-        s.append("矩阵D：").append('\n');
-        s.append(displayMatrix(matrix));
-        s.append("最多重复行的个数为：").append(maxNumber).append('\n');
+//        s.append("Threshold：").append(threshold).append('\n');
+//        s.append("file1：").append(file1).append('\n');
+//        s.append("file2：").append(file2).append('\n');
+//        s.append("矩阵S：").append('\n');
+//        s.append(displayMatrix(similarityMatrix));
+//        s.append("矩阵D：").append('\n');
+//        s.append(displayMatrix(matrix));
+//        s.append("最多重复行的个数为：").append(maxNumber).append('\n');
         s.append("重复率为：").append((double) maxNumber / Math.min(similarityMatrix.length, similarityMatrix[0].length))
                 .append('\n');
         return s.toString();
