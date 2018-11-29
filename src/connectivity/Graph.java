@@ -6,14 +6,34 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 class Graph {
-    private int vertex;
-    private int edge;
+    private int vertexNumber;
+    private int edgeNumber;
     private List<Integer[]> list;
     private String path;
     private boolean[][] map;
 
+    Graph(int verticeNumber, int edgeNumber) {
+        this.vertexNumber = verticeNumber;
+        this.edgeNumber = edgeNumber;
+        Set<Integer> set = new HashSet<>();
+        map = new boolean[verticeNumber][verticeNumber];
+        list = new ArrayList<>();
+        for (int i = 0; i < edgeNumber; i++) {
+            int num1 = (int) (Math.random() * verticeNumber);
+            int num2 = (int) (Math.random() * verticeNumber);
+            if (num1 == num2 || set.contains(num1 * verticeNumber + num2)) {
+                i = i - 1;
+            } else {
+                set.add(num1 * verticeNumber + num2);
+                set.add(num2 * verticeNumber + num1);
+                map[num1][num2] = map[num2][num1] = true;
+            }
+        }
+        toList();
+    }
 
     Graph(String path) {
         this.path = path;
@@ -22,8 +42,10 @@ class Graph {
     }
 
 
-    public int getVertex() {
-        return vertex;
+
+
+    public int getVertexNumber() {
+        return vertexNumber;
     }
 
     public List<Integer[]> getList() {
@@ -38,13 +60,10 @@ class Graph {
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(path))) {
             String line;
             line = bufferedReader.readLine();
-            vertex = Integer.parseInt(line);
+            vertexNumber = Integer.parseInt(line);
             line = bufferedReader.readLine();
-            edge = Integer.parseInt(line);
-            map = new boolean[vertex][];
-            for (int i = 0; i < map.length; i++) {
-                map[i] = new boolean[vertex];
-            }
+            edgeNumber = Integer.parseInt(line);
+            map = new boolean[vertexNumber][vertexNumber];
 
             while ((line = bufferedReader.readLine()) != null) {
                 String[] strings = line.split(" ");

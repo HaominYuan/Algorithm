@@ -17,12 +17,12 @@ public class UnionFindBase implements CalBridge {
     public UnionFindBase(Graph graph) {
         this.graph = graph;
         lca_iteration = 0;
-        par = new Integer[graph.getVertex()];
-        dsu_2ecc = new Integer[graph.getVertex()];
-        dsu_cc = new Integer[graph.getVertex()];
-        dsu_cc_size = new Integer[graph.getVertex()];
-        last_visit = new Integer[graph.getVertex()];
-        for (int i = 0; i < graph.getVertex(); i++) {
+        par = new Integer[graph.getVertexNumber()];
+        dsu_2ecc = new Integer[graph.getVertexNumber()];
+        dsu_cc = new Integer[graph.getVertexNumber()];
+        dsu_cc_size = new Integer[graph.getVertexNumber()];
+        last_visit = new Integer[graph.getVertexNumber()];
+        for (int i = 0; i < graph.getVertexNumber(); i++) {
             // 自己的父亲是本身
             dsu_2ecc[i] = i;
             dsu_cc[i] = i;
@@ -38,12 +38,6 @@ public class UnionFindBase implements CalBridge {
         List<Integer[]> list = graph.getList();
         for (Integer[] integers : list) {
             add_edge(integers[0], integers[1]);
-        }
-
-        for (Integer[] integers : list) {
-            if (find_2ecc(integers[0]) != find_2ecc(integers[1])) {
-                System.out.println(Arrays.toString(integers));
-            }
         }
 
         return bridges;
@@ -146,5 +140,16 @@ public class UnionFindBase implements CalBridge {
         } else {
             merge_path(a, b);
         }
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (Integer[] integers : graph.getList()) {
+            if (find_2ecc(integers[0]) != find_2ecc(integers[1])) {
+                stringBuilder.append(Arrays.toString(integers)).append("\n");
+            }
+        }
+        return stringBuilder.toString();
     }
 }

@@ -25,8 +25,8 @@ public class NaiveUnionFindBase implements CalBridge{
     }
 
     private int calConnectedComponent(List<Integer[]> list) {
-        int father[] = new int[graph.getVertex()];
-        int size[] = new int[graph.getVertex()];
+        int father[] = new int[graph.getVertexNumber()];
+        int size[] = new int[graph.getVertexNumber()];
         for (int i = 0; i < father.length; i++) {
             father[i] = i;
             size[i] = 1;
