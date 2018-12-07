@@ -2,12 +2,19 @@ package connectivity;
 
 public class Test {
     public static void main(String[] args) {
-        int x = 100;
-        for (int i = 0; i < 4; i++) {
-            helper(x, x, 1000);
-            x = x * 10;
-            System.out.println("------------");
-        }
+        Graph graph = new Graph("src/connectivity/test3");
+        BruteForce bruteForce = new BruteForce(graph);
+        bruteForce.calBridge();
+//        System.out.println(bruteForce);
+//        UnionFindBase unionFindBase = new UnionFindBase(graph);
+//        unionFindBase.calBridge();
+//        System.out.println(unionFindBase);
+//        int x = 100;
+//        for (int i = 0; i < 4; i++) {
+//            helper(x, x, 1000);
+//            x = x * 10;
+//            System.out.println("------------");
+//        }
     }
 
 

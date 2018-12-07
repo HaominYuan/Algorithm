@@ -1,5 +1,6 @@
 package connectivity;
 
+
 import java.util.Arrays;
 
 public class BruteForce implements CalBridge {
@@ -19,7 +20,7 @@ public class BruteForce implements CalBridge {
             map[aList[1]][aList[0]] = false;
             if (original < calConnectedComponent()) {
                 sum = sum + 1;
-//                System.out.println(Arrays.toString(aList));
+                System.out.println(Arrays.toString(aList));
             }
             map[aList[0]][aList[1]] = true;
             map[aList[1]][aList[0]] = true;
