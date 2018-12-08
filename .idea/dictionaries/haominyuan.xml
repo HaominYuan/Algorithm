@@ -2,7 +2,9 @@
   <dictionary name="haominyuan">
     <words>
       <w>decodings</w>
+      <w>edmonds</w>
       <w>implememt</w>
+      <w>karp</w>
       <w>leetcode</w>
       <w>nums</w>
       <w>postorder</w>
