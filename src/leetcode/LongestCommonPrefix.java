@@ -34,4 +34,5 @@ public class LongestCommonPrefix {
             return leftLongest.substring(0, minLength);
         }
     }
+
 }

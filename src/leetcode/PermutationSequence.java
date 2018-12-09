@@ -40,13 +40,13 @@ public class PermutationSequence {
                 k = k - temp * list.get(i);
             }
 
-            String s = "";
+            StringBuilder s = new StringBuilder();
             for (int i = 0; i < n; i++) {
-                s = s + ints[i];
+                s.append(ints[i]);
             }
 
 
-            return s;
+            return s.toString();
         }
     }
 }
