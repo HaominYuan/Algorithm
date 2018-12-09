@@ -27,6 +27,10 @@ public class LongestSubstringWithoutRepeatingCharacters {
      * 随后计算长度，此时比较新串长度和旧串大小
      * 把出现的字符的位置放入map中
      * 因为char天然就是一个map，而且key值特别小所以可以直接用数组来模拟map。
+     *
+     * 注意考虑两种情况，一个是所有都不一样，一个是所有都一样
+     * 初始化为零意味着当所有都是不一样的时候，我们初始化为0，所以我们少了一个1，所以我们在计算长度的时候要加上1
+     * 因为初始化都是0，所以我们有面出现字符是要加1
      */
     static class Solution {
         static int lengthOfLongestSubstring(String s) {
