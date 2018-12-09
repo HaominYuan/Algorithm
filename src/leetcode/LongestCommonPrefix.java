@@ -21,11 +21,11 @@ public class LongestCommonPrefix {
             }
             int mid = (left + right) / 2;
             String leftLongest = func(strings, left, mid);
-            String rightLongest = func(strings, mid + 1, right);
-            int minLength = Math.min(leftLongest.length(), rightLongest.length());
-            if (minLength == 0) {
+            if (leftLongest.length() == 0) {
                 return "";
             }
+            String rightLongest = func(strings, mid + 1, right);
+            int minLength = Math.min(leftLongest.length(), rightLongest.length());
             for (int i = 0; i < minLength; i++) {
                 if (leftLongest.charAt(i) != rightLongest.charAt(i)) {
                     return leftLongest.substring(0, i);
