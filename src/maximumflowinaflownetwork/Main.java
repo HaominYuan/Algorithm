@@ -7,13 +7,16 @@ public class Main {
         int[][] flow = new int[vertex][vertex];
         int[] parent = new int[vertex];
         while (true) {
+            // 将所有节点的父亲赋值为-1
             Arrays.fill(parent, -1);
+            // 将开始节点的父亲赋值为其本身
             parent[source] = source;
+            // 用来记录每个节点的流量
             int[] M = new int[vertex];
+            // 每个节点的流量设置为最大
             M[source] = Integer.MAX_VALUE;
             Queue<Integer> Q = new LinkedList<>();
             Q.offer(source);
-
             LOOP:
             while (!Q.isEmpty()) {
                 int u = Q.poll();
@@ -30,19 +33,26 @@ public class Main {
                             if (v != sink)
                                 Q.offer(v);
                             else {
+                                // 输出路径，更新矩阵
+                                Stack<Integer> stack = new Stack<>();
                                 while (parent[v] != v) {
                                     u = parent[v];
+                                    stack.add(u + 1);
                                     flow[u][v] += M[sink];
                                     flow[v][u] -= M[sink];
                                     v = u;
                                 }
+                                System.out.print("流量：" + M[sink] + "，路径：");
+                                while (!stack.isEmpty()) {
+                                    System.out.print(stack.pop() + "--");
+                                }
+                                System.out.println(sink + 1);
                                 break LOOP;
                             }
                         }
                     }
                 }
             }
-
             // 如果sink节点的父亲节点为-1，意味着没有找到路径
             if (parent[sink] == -1) {
                 int sum = 0;
@@ -69,7 +79,7 @@ public class Main {
                 E[point2-1][point1-1] = true;
                 C[point1 - 1][point2 - 1] = C[point1 - 1][point2 - 1] + capacity;
             }
-            System.out.println(new Main().edmondsKarp(E, C, 0, vertex - 1));
+            System.out.println("总流量：" + new Main().edmondsKarp(E, C, 0, vertex - 1));
         }
     }
 }
