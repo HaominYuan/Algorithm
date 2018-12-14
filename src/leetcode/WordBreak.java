@@ -19,6 +19,7 @@ public class WordBreak {
         }
 
 
+
         boolean func(String s, List<String> wordDict) {
             if (s.equals("")) {
                 return true;
