@@ -2,7 +2,7 @@ package maximumflowinaflownetwork;
 
 import java.util.*;
 public class Main {
-    private int edmondsKarp(boolean[][] E, int[][] capacity, int source, int sink) {
+    private static int edmondsKarp(boolean[][] E, int[][] capacity, int source, int sink) {
         int vertex = capacity.length;
         int[][] flow = new int[vertex][vertex];
         int[] parent = new int[vertex];
@@ -42,11 +42,11 @@ public class Main {
                                     flow[v][u] -= M[sink];
                                     v = u;
                                 }
-                                System.out.print("流量：" + M[sink] + "，路径：");
-                                while (!stack.isEmpty()) {
-                                    System.out.print(stack.pop() + "--");
-                                }
-                                System.out.println(sink + 1);
+//                                System.out.print("流量：" + M[sink] + "，路径：");
+//                                while (!stack.isEmpty()) {
+//                                    System.out.print(stack.pop() + "--");
+//                                }
+//                                System.out.println(sink + 1);
                                 break LOOP;
                             }
                         }
@@ -65,6 +65,10 @@ public class Main {
 
 
     public static void main(String[] args) {
+        myTest();
+    }
+
+    void hduTest() {
         Scanner scanner = new Scanner(System.in);
         while (scanner.hasNext()) {
             int edge = scanner.nextInt();
@@ -79,7 +83,24 @@ public class Main {
                 E[point2-1][point1-1] = true;
                 C[point1 - 1][point2 - 1] = C[point1 - 1][point2 - 1] + capacity;
             }
-            System.out.println("总流量：" + new Main().edmondsKarp(E, C, 0, vertex - 1));
+            System.out.println("总流量：" + edmondsKarp(E, C, 0, vertex - 1));
         }
     }
+
+    private static void myTest() {
+        // 这个是测试点的算法，假设边的个数为500个，点的个数从50到100（步长为10）。
+        // 测试的数据是从100到1000，
+        for (int i = 1; i <= 10; i++) {
+            double sum = 0;
+            for (int j = 0; j < 100; j++) {
+                Graph graph = new Graph(i * 100, (i * 100) * (i * 100 - 1) * 3 / 8);
+                double begin = System.currentTimeMillis();
+                edmondsKarp(graph.getE(), graph.getC(), 0, graph.getVertexNumber() - 1);
+                double end = System.currentTimeMillis();
+                sum = end - begin;
+            }
+            System.out.println(i * 100 + "个点的30次的平均时间为：" + sum / 30);
+        }
+    }
+
 }
