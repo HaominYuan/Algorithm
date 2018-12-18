@@ -1,4 +1,4 @@
-package binarysorttree;
+package tree.binarysearchtree;
 
 import leetcode.TreeNode;
 import java.util.ArrayList;

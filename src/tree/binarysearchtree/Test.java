@@ -1,4 +1,6 @@
-package binarysorttree;
+package tree.binarysearchtree;
+import tree.binarysearchtree.BinarySortTree;
+
 import java.util.ArrayList;
 import java.util.List;
 

@@ -1,6 +1,6 @@
 package leetcode;
 
-import binarysorttree.BinarySortTree;
+import tree.binarysearchtree.BinarySortTree;
 
 public class BinarySearchTreeAndDoublyLinkedList {
 
