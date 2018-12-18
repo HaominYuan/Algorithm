@@ -17,9 +17,7 @@ class ImplementTrie_PrefixTree {
         System.out.println(trie.search("app"));
     }
 
-    static class Trie {
-
-
+    static class MyTrie {
         class TrieNode {
             Map<Character, TrieNode> map;
             boolean isWord;
@@ -33,7 +31,7 @@ class ImplementTrie_PrefixTree {
 
 
         /** Initialize your data structure here. */
-        public Trie() {
+        public MyTrie() {
             root = new TrieNode();
         }
 
@@ -77,6 +75,67 @@ class ImplementTrie_PrefixTree {
                 temp = next;
             }
             return temp.isWord;
+        }
+    }
+
+    static class Trie {
+        private class TreeNode {
+            char val;
+            TreeNode[] next;
+            boolean isEnd;
+
+            public TreeNode(char c) {
+                this.val = c;
+                this.next = new TreeNode[26];
+            }
+        }
+
+        public TreeNode head;
+
+
+        public HashMap<Character, Integer> map = new HashMap<>();
+
+        public Trie() {
+            head = new TreeNode(' ');
+        }
+
+        public void insert(String word) {
+            TreeNode index = head;
+            for (int i = 0; i < word.length(); i++) {
+                int temp = word.charAt(i) - 'a';
+                // 用数组模拟hashmap
+                if (index.next[temp] == null) {
+                    index.next[temp] = new TreeNode(word.charAt(i));
+                }
+                index = index.next[temp];
+            }
+            index.isEnd = true;
+        }
+
+
+        public boolean search(String word) {
+            TreeNode index = head;
+            for (int i = 0; i < word.length(); i++) {
+                int temp = word.charAt(i) - 'a';
+                if (index.next[temp] == null) {
+                    return false;
+                }
+                index = index.next[temp];
+            }
+            return index.isEnd;
+        }
+
+
+        public boolean startsWith(String prefix) {
+            TreeNode index = head;
+            for (int i = 0; i < prefix.length(); i++) {
+                int temp = prefix.charAt(i) - 'a';
+                if (index.next[temp] == null) {
+                    return false;
+                }
+                index = index.next[temp];
+            }
+            return true;
         }
     }
 
