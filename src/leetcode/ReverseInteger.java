@@ -3,7 +3,7 @@ package leetcode;
 public class ReverseInteger {
     public static void main(String[] args) {
         System.out.println(Solution.reverse(-2147483648));
-//        System.out.println(MySolution.reverse(-123));
+//        System.out.println(SortStackByStack.reverse(-123));
     }
 
 

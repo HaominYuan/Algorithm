@@ -19,7 +19,6 @@ public class ReverseStack {
             if (stack.isEmpty()) {
                 return;
             }
-
             int last = getAndRemoveLastElement(stack);
             reverse(stack);
             stack.push(last);
@@ -29,11 +28,10 @@ public class ReverseStack {
             int value = stack.pop();
             if (stack.isEmpty()) {
                 return value;
-            } else {
-                int last = getAndRemoveLastElement(stack);
-                stack.push(value);
-                return last;
             }
+            int last = getAndRemoveLastElement(stack);
+            stack.push(value);
+            return last;
         }
     }
 

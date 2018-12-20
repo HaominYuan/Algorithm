@@ -11,7 +11,7 @@ public class Fibonacci {
         System.out.println(time2 - time1);
         System.out.println(time3 - time2);
 
-//        if (new MySolution().func(90) == func(90)) {
+//        if (new SortStackByStack().sortStackByStack(90) == sortStackByStack(90)) {
 //            System.out.println("true");
 //        }
     }

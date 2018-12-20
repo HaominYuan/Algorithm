@@ -4,11 +4,11 @@ public class WildcardMatching {
     public static void main(String[] args) {
         String s = "aa";
         String p = "a.cpp";
-//        new MySolution().isMatch(s, p);
+//        new SortStackByStack().isMatch(s, p);
 
     }
 
-//    static class MySolution {
+//    static class SortStackByStack {
 //        public boolean isMatch(String s, String p) { }
 //    }
 }

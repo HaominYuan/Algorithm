@@ -46,7 +46,7 @@ public class Agent {
 //            agent.func1(game, 0);
 //            Game copy = (Game) game.clone();
 //            time2 = System.currentTimeMillis();
-//            agent.func(copy, 0);
+//            agent.sortStackByStack(copy, 0);
 //            time3 = System.currentTimeMillis();
 //            agent.hashMap.clear();
 //            sum1 = sum1 + time2 - time1;

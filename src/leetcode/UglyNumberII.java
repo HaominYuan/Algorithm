@@ -32,7 +32,7 @@ public class UglyNumberII {
         }
     }
 
-//    static class MySolution {
+//    static class SortStackByStack {
 //        public int nthUglyNumber(int n) {
 //            if (n == 1) {
 //                return 1;

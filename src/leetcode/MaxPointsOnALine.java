@@ -8,7 +8,7 @@
 //
 //    }
 //
-//    static class MySolution {
+//    static class SortStackByStack {
 //        public int maxPoints(Point[] points) {
 //            Map<Double, Map<Double, Integer>> map = new HashMap<>();
 //            for (int i = 0; i < points.length; i++) {
