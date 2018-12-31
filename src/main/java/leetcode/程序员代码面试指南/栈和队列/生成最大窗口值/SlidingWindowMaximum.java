@@ -28,28 +28,29 @@ public class SlidingWindowMaximum {
 
         // 初始化
         for (int i = 0; i < k; i++) {
-            while (!(queue.isEmpty() || nums[queue.getLast()] < nums[i])) {
+            while (!queue.isEmpty() && nums[queue.getLast()] < nums[i]) {
                 queue.removeLast();
             }
             queue.offer(i);
         }
 
-        while (!queue.isEmpty()) {
-            System.out.println(nums[queue.pop()]);
-        }
-
-//        for (int i = k, j = 0; i < nums.length; i++, j++) {
-//            int index = queue.peek();
-//            if (j == index) {
-//                queue.poll();
-//            }
-//            max[j] = nums[index];
-//
-//            while (!(queue.isEmpty() || nums[queue.getLast()] >= nums[i])) {
-//                queue.removeLast();
-//            }
-//
+//        while (!queue.isEmpty()) {
+//            System.out.println(nums[queue.pop()]);
 //        }
+
+        for (int i = k, j = 0; i < nums.length; i++, j++) {
+            int index = queue.peek();
+            if (j == index) {
+                queue.poll();
+            }
+            max[j] = nums[index];
+
+            while (!queue.isEmpty() && nums[queue.getLast()] < nums[i]) {
+                queue.removeLast();
+            }
+            queue.offer(i);
+        }
+        max[max.length - 1] = nums[queue.peek()];
 
         return max;
     }
