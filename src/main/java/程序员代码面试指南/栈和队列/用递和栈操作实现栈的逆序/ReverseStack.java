@@ -1,4 +1,4 @@
-package leetcode.程序员代码面试指南.栈和队列.用递和栈操作实现栈的逆序;
+package 程序员代码面试指南.栈和队列.用递和栈操作实现栈的逆序;
 
 import java.util.Stack;
 

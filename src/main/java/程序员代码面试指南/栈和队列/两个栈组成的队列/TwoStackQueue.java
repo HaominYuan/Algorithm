@@ -1,4 +1,4 @@
-package leetcode.程序员代码面试指南.栈和队列.两个栈组成的队列;
+package 程序员代码面试指南.栈和队列.两个栈组成的队列;
 
 import java.util.Stack;
 

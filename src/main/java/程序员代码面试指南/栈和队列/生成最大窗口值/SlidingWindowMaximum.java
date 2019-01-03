@@ -1,9 +1,7 @@
-package leetcode.程序员代码面试指南.栈和队列.生成最大窗口值;
+package 程序员代码面试指南.栈和队列.生成最大窗口值;
 
 import java.util.ArrayDeque;
 import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.Queue;
 
 public class SlidingWindowMaximum {
     public static void main(String[] args) {

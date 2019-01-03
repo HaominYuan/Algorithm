@@ -1,4 +1,4 @@
-package leetcode.程序员代码面试指南.栈和队列.用一个栈实现另一个栈的排序;
+package 程序员代码面试指南.栈和队列.用一个栈实现另一个栈的排序;
 
 import java.util.Stack;
 

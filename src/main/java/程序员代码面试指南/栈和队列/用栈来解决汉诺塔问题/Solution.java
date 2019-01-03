@@ -1,4 +1,4 @@
-package leetcode.程序员代码面试指南.栈和队列.用栈来解决汉诺塔问题;
+package 程序员代码面试指南.栈和队列.用栈来解决汉诺塔问题;
 
 import java.util.Stack;
 

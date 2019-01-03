@@ -1,13 +1,12 @@
-package leetcode.程序员代码面试指南.栈和队列.设计一个有getMin功能的栈;
+package 程序员代码面试指南.栈和队列.设计一个有getMin功能的栈;
 
 import java.util.Stack;
 
-public class MinStack1 {
-
+public class MinStack2 {
     private Stack<Integer> stackData;
     private Stack<Integer> stackMin;
 
-    public MinStack1() {
+    public MinStack2() {
         stackData = new Stack<>();
         stackMin = new Stack<>();
     }
@@ -15,25 +14,23 @@ public class MinStack1 {
     public void push(int newNum) {
         if (stackMin.isEmpty() || newNum <= getMin()) {
             stackMin.push(newNum);
+        } else {
+            stackMin.push(getMin());
         }
         stackData.push(newNum);
     }
 
     public int pop() {
         if (stackData.isEmpty()) {
-            throw new RuntimeException("Your stack is empty.");
+            throw new RuntimeException("Your stack is empty");
         }
-        int value = stackData.pop();
-        if (value == getMin()) {
-            stackMin.pop();
-        }
-        return value;
+        stackMin.pop();
+        return stackData.pop();
     }
-
 
     public int getMin() {
         if (stackMin.isEmpty()) {
-            throw new RuntimeException("Your stack is empty.");
+            throw new RuntimeException("Your stack is empty");
         }
         return stackMin.peek();
     }
