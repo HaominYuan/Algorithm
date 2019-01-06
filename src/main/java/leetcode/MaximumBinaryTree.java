@@ -6,7 +6,7 @@ import java.util.Stack;
 public class MaximumBinaryTree {
     public static void main(String[] args) {
         TreeNode treeNode = new Solution().constructMaximumBinaryTree(new int[]{3, 2, 1, 6, 0, 5});
-//        System.out.println(new Solution().constructMaximumBinaryTree(new int[]{3, 2, 1, 6, 0, 5}));
+//        System.out.println(new MySolution().constructMaximumBinaryTree(new int[]{3, 2, 1, 6, 0, 5}));
         System.out.println(treeNode);
     }
 

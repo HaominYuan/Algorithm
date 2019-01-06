@@ -1,51 +1,42 @@
-import leetcode.TreeNode;
-
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Stack;
+import java.util.*;
 
 public class Main {
+
     public static void main(String[] args) {
-        int[] array = new int[]{3, 4, 5, 1, 2};
-        HashMap<TreeNode, TreeNode> map = getLeftBigMap(array);
-        for (Map.Entry<TreeNode, TreeNode> entry : map.entrySet()) {
-            System.out.print(entry.getKey().val + " -> ");
-            if (entry.getValue() == null) {
-                System.out.println("null");
-            } else {
-                System.out.println(+entry.getValue().val);
+        int[] nums = {1, -1, -1, 0};
+        System.out.println(new Solution().threeSum(nums));
+    }
+
+    static class Solution {
+        public List<List<Integer>> threeSum(int[] nums) {
+            Arrays.sort(nums);
+            List<List<Integer>> lists = new ArrayList<>();
+            for (int i = 0; i < nums.length - 2; i++) {
+                if (i == 0 || nums[i - 1] != nums[i]) {
+                    int left = i + 1, right = nums.length - 1, sum = -nums[i];
+                    while (left < right) {
+                        if (nums[left] + nums[right] == sum) {
+                            lists.add(Arrays.asList(nums[i], nums[left], nums[right]));
+                            while (left < right && nums[left] == nums[left + 1]) {
+                                left = left + 1;
+                            }
+                            while (left < right && nums[right] == nums[right - 1]) {
+                                right = right - 1;
+                            }
+                            left = left + 1;
+                            right = right - 1;
+                        } else if (nums[left] + nums[right] > sum) {
+                            right = right - 1;
+                        } else {
+                            left = left + 1;
+                        }
+                    }
+                }
             }
+            return lists;
         }
     }
 
-    private static HashMap<TreeNode, TreeNode> getLeftBigMap(int[] array) {
-        HashMap<TreeNode, TreeNode> map = new HashMap<>();
-        Stack<TreeNode> stack = new Stack<>();
-        for (int i1 : array) {
-            while (!stack.isEmpty() && stack.peek().val < i1) {
-                popAndSetMap(stack, map);
-            }
-            stack.push(new TreeNode(i1));
-        }
-        while (!stack.isEmpty()) {
-            popAndSetMap(stack, map);
-        }
-        return map;
-    }
-
-
-    private static void popAndSetMap(Stack<TreeNode> stack, HashMap<TreeNode, TreeNode> map) {
-        // 如果栈是空的，抛出异常
-        if (stack.isEmpty()) {
-            throw new IllegalArgumentException("Stack is empty!");
-        }
-        TreeNode temp = stack.pop();
-        if (stack.isEmpty()) {
-            map.put(temp, null);
-        } else {
-            map.put(temp, stack.peek());
-        }
-    }
 
 
 }

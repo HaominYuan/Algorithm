@@ -3,12 +3,7 @@ package leetcode;
 import java.util.HashMap;
 import java.util.List;
 
-/**
- * @ProjectName: leetcode
- * @Description: java类作用描述
- * @Author: Tst
- * @CreateDate: 2018/7/22 上午2:06
- */
+
 public class TwoSum {
     public static void main(String[] args) {
         int[] nums = {2, 7, 11, 15};
@@ -17,25 +12,6 @@ public class TwoSum {
             System.out.println(num);
         }
     }
-
-
-    /**
-     * 两遍循环
-     * 时间复杂度o(n)
-     */
-    class MySolution {
-        public int[] twoSum(int[] nums, int target) {
-            for (int i = 0; i < nums.length; i++) {
-                for (int j = i + 1; j < nums.length; j++) {
-                    if (nums[i] + nums[j] == target) {
-                        return new int[]{i, j};
-                    }
-                }
-            }
-            return null;
-        }
-    }
-
 
     /**
      * 将思维转变成没看到一个nums[i]则在已经知道的元素中查询有没有他的complement
@@ -56,7 +32,6 @@ public class TwoSum {
             return null;
         }
     }
-
 }
 
 
