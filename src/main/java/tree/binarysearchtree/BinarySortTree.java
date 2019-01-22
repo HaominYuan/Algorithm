@@ -78,9 +78,6 @@ public class BinarySortTree {
         inorderTraversalR(list, root.right);
     }
 
-
-
-
     public int searchMax() {
         if (root.val == 0) {
             return Integer.MIN_VALUE;
@@ -91,7 +88,6 @@ public class BinarySortTree {
         }
         return p.val;
     }
-
 
     public int searchMin() {
         if (root.val == 0) {
