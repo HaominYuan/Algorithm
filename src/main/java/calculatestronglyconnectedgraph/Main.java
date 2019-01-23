@@ -1,3 +1,5 @@
+package calculatestronglyconnectedgraph;
+
 import java.util.*;
 
 public class Main {

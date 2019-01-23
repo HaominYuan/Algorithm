@@ -1,3 +1,5 @@
+package calculatestronglyconnectedgraph;
+
 public class Temp {
     public static void main(String[] args) {
         double[] nums = new double[7];

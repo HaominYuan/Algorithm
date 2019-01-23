@@ -1,3 +1,5 @@
+package calculatestronglyconnectedgraph;
+
 import java.util.Objects;
 
 class Edge {

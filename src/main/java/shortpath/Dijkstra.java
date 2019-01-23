@@ -12,7 +12,7 @@ import java.util.Set;
  */
 public class Dijkstra {
 
-    public static Graph calculateShortestPathFromSource(Graph graph, Node source) {
+    public static void calculateShortestPathFromSource(Graph graph, Node source) {
         // 将自己到自己的距离设置为零
         source.setDistance(0);
         // 这个是已经确定点的集合
@@ -41,7 +41,6 @@ public class Dijkstra {
                 }
             }
         }
-        return graph;
     }
 
     // 从没有确定的位置去寻找离源点最近的点
@@ -98,7 +97,7 @@ public class Dijkstra {
         graph.addNode(nodeE);
         graph.addNode(nodeF);
 
-        graph = Dijkstra.calculateShortestPathFromSource(graph, nodeA);
+        Dijkstra.calculateShortestPathFromSource(graph, nodeA);
         for (Node node : nodeE.getShortestPath()) {
             System.out.println(node.getName());
         }

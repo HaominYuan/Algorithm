@@ -9,7 +9,7 @@ public class CountPrimes {
         System.out.println(new NaiveSolution().countPrimes(n));
     }
 
-//    static class Solution {
+//    static class MySolution {
 //        public int countPrimes(int n) {
 //            if (n <= 2) {
 //                return 0;
