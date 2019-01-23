@@ -42,9 +42,9 @@ public class Main {
                                     flow[v][u] -= M[sink];
                                     v = u;
                                 }
-//                                System.out.print("流量：" + M[sink] + "，路径：");
+//                                System.out.display("流量：" + M[sink] + "，路径：");
 //                                while (!stack.isEmpty()) {
-//                                    System.out.print(stack.pop() + "--");
+//                                    System.out.display(stack.pop() + "--");
 //                                }
 //                                System.out.println(sink + 1);
                                 break LOOP;

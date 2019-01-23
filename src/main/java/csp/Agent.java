@@ -65,7 +65,7 @@ public class Agent {
 //        game = Game.create(K, M, N);
 //        for (int i = 0; i < game.map.length; i++) {
 //            for (int j = 0; j < game.map[i].length; j++) {
-//                System.out.print(game.map[i][j] + " ");
+//                System.out.display(game.map[i][j] + " ");
 //            }
 //            System.out.println();
 //

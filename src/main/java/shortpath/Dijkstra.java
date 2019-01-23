@@ -1,10 +1,15 @@
-package leetcode.shortpath;
+package shortpath;
 
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.Map;
 import java.util.Set;
 
+/**
+ * Dijkstra算法将点划分为三个集合：第一个是确定的最短距离的点，第二个是看见但是不确定是最短的点，第三个是未看见。
+ * 首先将源点设置为未确定的点，然后遍历与源点接触的点，更新这些点与源点的距离，把这些点放入看见但是不确定是否为最短点的集合。
+ * 随后从未看见的点中选一个与源点距离最短的点作为下一个确定的最短距离的点。
+ */
 public class Dijkstra {
 
     public static Graph calculateShortestPathFromSource(Graph graph, Node source) {
@@ -14,10 +19,8 @@ public class Dijkstra {
         Set<Node> settledNodes = new HashSet<>();
         // 这个是未确定点的集合
         Set<Node> unsettledNodes = new HashSet<>();
-
         // 将源点加入未设置点
         unsettledNodes.add(source);
-
         // 当未确定点的集合为空是意味着所有的点都遍历完了
         while (unsettledNodes.size() != 0) {
             // 从当前未确定的点中找一个离源点最近的点作为下一个点

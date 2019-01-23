@@ -1,4 +1,4 @@
-package leetcode.shortpath;
+package shortpath;
 
 import java.util.HashSet;
 import java.util.Set;
