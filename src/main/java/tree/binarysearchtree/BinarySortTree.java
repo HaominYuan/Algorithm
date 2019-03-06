@@ -19,12 +19,6 @@ public class BinarySortTree {
         root = new TreeNode(0);
     }
 
-
-    public BinarySortTree(TreeNode root) {
-        this();
-        this.root.left = root;
-    }
-
     public int getSize() {
         return root.val;
     }

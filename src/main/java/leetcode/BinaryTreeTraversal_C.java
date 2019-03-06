@@ -74,8 +74,7 @@ public class BinaryTreeTraversal_C {
 
                 cur = stack.peek();
                 if (cur.right == null || cur.right == last) {
-                    stack.pop();
-                    list.add(cur.val);
+                    list.add(stack.pop().val);
                     last = cur;
                     cur = null;
                 } else {

@@ -32,7 +32,7 @@ public class BinarySearchTreeAndDoublyLinkedList {
     private static TreeNode pre = dummy;
 
 
-    void convert(TreeNode root) {
+    private void convert(TreeNode root) {
         if (root.left != null) {
             convert(root.left);
         }
