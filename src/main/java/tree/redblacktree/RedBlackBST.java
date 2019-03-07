@@ -75,6 +75,10 @@ public class RedBlackBST {
             return new Node(val, RED);
         }
 
+        if (isRed(cur.left) && isRed(cur.right)) {
+            flipColors(cur);
+        }
+
         if (val < cur.val) {
             cur.left = put(cur.left, val);
         } else if (val > cur.val) {
@@ -87,13 +91,19 @@ public class RedBlackBST {
         if (isRed(cur.left) && isRed(cur.left.left)) {
             cur = rotateRight(cur);
         }
-        if (isRed(cur.left) && isRed(cur.right)) {
-            flipColors(cur);
-        }
+
+        cur.N = size(cur.left) + size(cur.right);
 
         return cur;
-
     }
+
+//    private Node moveRedLeft(Node cur) {
+//        flipColors(cur);
+//        if (isRed(cur.right.left)) {
+//            cur.right = rotateRight(cur.right);
+//
+//        }
+//    }
 
     private List<Integer> inorderTreeC() {
         List<Integer> list = new LinkedList<>();
